@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					<!-- /user menu -->
-
+					<?php $manuName = basename(__DIR__); ?>
 					<?php include '../includes/navigation.php'; ?>
 
 				</div>
@@ -96,7 +96,7 @@
 							<?php
 								if (isset($_GET['msg'])) {
 							?>
-								<div class="alert alert-success no-border">
+								<div class="alert alert-success no-border mt-10">
 									<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
 									<span class="text-semibold">Success</span> <?php echo $_GET['msg']; ?>
 								</div>

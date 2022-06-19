@@ -3,6 +3,7 @@
 	
 <?php
 	// die($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+
 	if (basename(__DIR__) != 'admin') {
 		$baseUrl = '../';
 		$isInternal = true;
@@ -50,7 +51,7 @@
 					</div>
 					<!-- /user menu -->
 
-
+					<?php $manuName = basename(__DIR__); ?>
 					<?php include 'includes/navigation.php'; ?>
 
 				</div>
