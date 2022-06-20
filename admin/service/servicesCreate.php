@@ -47,7 +47,7 @@
 						</div>
 					</div>
 					<!-- /user menu -->
-					<?php $manuName = basename(__DIR__); ?>
+                    <?php $manuName = basename(__DIR__); ?>
 					<?php include '../includes/navigation.php'; ?>
 
 				</div>
@@ -62,7 +62,7 @@
 				<div class="page-header">
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
-							<li><a href="#"><i class="icon-image-compare position-left"></i> Services</a></li>
+							<li><a href="#"><i class="icon-office position-left"></i> Service</a></li>
 							<li class="active">Create</li>
 						</ul>
 					</div>
@@ -76,7 +76,7 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Banner Create</h5>
+							<h5 class="panel-title">Service Create</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
 			                		<!-- <li><a data-action="collapse"></a></li>
@@ -88,7 +88,7 @@
 
 						<div class="panel-body">
 
-							<form class="form-horizontal" action="../controller/BannerController.php" method="post">
+							<form class="form-horizontal" action="../controller/ServiceController.php" method="post">
 								<fieldset class="content-group mt-10">
 
 									<?php
@@ -101,37 +101,31 @@
 									<?php } ?>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="title">Title</label>
+										<label class="control-label col-lg-2" for="service_name">Service Name</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control" id="title" name="title" required>
+											<input type="text" class="form-control" id="service_name" name="service_name" placeholder="Service Name" required>
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="sub_title">Sub Title</label>
+										<label class="control-label col-lg-2" for="service_details">Service Details</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control" id="sub_title" name="sub_title" required>
+											<textarea class="form-control" id="service_details" name="service_details" placeholder="Services Details" required></textarea>
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="details">Details</label>
+										<label class="control-label col-lg-2" for="icon_name">Icon Name</label>
 										<div class="col-lg-10">
-											<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="details" name="details" required></textarea>
+											<input type="text" class="form-control" placeholder="Icon Name" id="icon_name" name="icon_name" required>
 										</div>
 									</div>
 
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="image">Image</label>
-										<div class="col-lg-10">
-											<input type="file" class="form-control" id="image" name="image">
-										</div>
-									</div>
-								</fieldset>
+                                </fieldset>
 
 								<div class="text-right">
-									<button type="submit" class="btn btn-primary" name="saveBanner">Submit</button>
-									<a href="bannerList.php" class="btn btn-default">Back To List </a>
+									<button type="submit" class="btn btn-primary" name="saveService">Submit</button>
+									<a href="servicesList.php" class="btn btn-default">Back To List </a>
 								</div>
 							</form>
 						</div>

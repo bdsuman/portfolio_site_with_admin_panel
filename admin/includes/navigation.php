@@ -4,9 +4,9 @@
         <ul class="navigation navigation-main navigation-accordion">
 
             <!-- Main -->
-            <li class=<?php echo $manuName == 'admin' ? "active" : ''; ?> ><a href="#"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-            <li class=<?php echo $manuName == 'banner' ? "active" : ''; ?> ><a href="<?php echo $isInternal == true ? '': 'banner/';?>bannerList.php"><i class="icon-image-compare"></i> <span>Banners</span></a></li>
-            <li><a href="#"><i class="icon-home4"></i> <span>Services</span></a></li>
+            <li class=<?php echo $manuName == 'admin' ? "active" : ''; ?> ><a href="<?php echo $isInternal == true ? '../': '';?>index.php"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+            <li class=<?php echo $manuName == 'banner' ? "active" : ''; ?> ><a href="<?php echo $isInternal == true ? '../banner/': 'banner/';?>bannerList.php"><i class="icon-image-compare"></i> <span>Banners</span></a></li>
+            <li class=<?php echo $manuName == 'service' ? "active" : ''; ?>><a href="<?php echo $isInternal == true ? '../service/': 'service/';?>servicesList.php"><i class="icon-office"></i> <span>Services</span></a></li>
             <li><a href="#"><i class="icon-home4"></i> <span>Sections</span></a></li>
             <li><a href="#"><i class="icon-home4"></i> <span>Our Projects</span></a></li>
             <li><a href="#"><i class="icon-home4"></i> <span>Our Staff</span></a></li>
