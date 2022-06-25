@@ -88,7 +88,7 @@
 
 						<div class="panel-body">
 
-							<form class="form-horizontal" action="../controller/BannerController.php" method="post">
+							<form class="form-horizontal" action="../controller/BannerController.php" method="post" enctype="multipart/form-data">
 								<fieldset class="content-group mt-10">
 
 									<?php

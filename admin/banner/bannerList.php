@@ -126,7 +126,7 @@
 										<td><?php echo $banner['title']; ?></td>
 										<td><?php echo $banner['sub_title']; ?></td>
 										<td><?php echo $banner['details']; ?></td>
-										<td><?php echo $banner['image']; ?></td>
+										<td><img src="../uploads/bannerImage/<?php echo $banner['image']; ?>" alt="image" class="img-responsive" width="50px" height="50px"></td>
 										<td class="text-center">
 											<a href="bannerUpdate.php?banner_id=<?php echo $banner['id']; ?>"><i class="icon-pencil7"></i></a>
 											<a href="bannerDelete.php?banner_id=<?php echo $banner['id']; ?>"><i class="icon-trash"></i></a>

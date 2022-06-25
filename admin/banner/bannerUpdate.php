@@ -47,7 +47,7 @@
 						</div>
 					</div>
 					<!-- /user menu -->
-
+					<?php $manuName = basename(__DIR__); ?>
 					<?php include '../includes/navigation.php'; ?>
 
 				</div>
@@ -93,7 +93,7 @@
 								$getSingleDataQry = "SELECT * FROM banners WHERE id={$banner_id}";
 								$getResult = mysqli_query($dbCon, $getSingleDataQry);
 							?>
-							<form class="form-horizontal" action="../controller/BannerController.php" method="post">
+							<form class="form-horizontal" action="../controller/BannerController.php" method="post" enctype="multipart/form-data">
 								<fieldset class="content-group mt-10">
 
 									<?php
@@ -135,6 +135,7 @@
 										<div class="form-group">
 											<label class="control-label col-lg-2" for="image">Image</label>
 											<div class="col-lg-10">
+												<input type="hidden" class="form-control" id="oldImage" name="oldImage" value="<?php echo $banner['image']; ?>">
 												<input type="file" class="form-control" id="image" name="image">
 											</div>
 										</div>
