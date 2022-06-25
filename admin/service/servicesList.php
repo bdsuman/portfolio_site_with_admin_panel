@@ -110,7 +110,6 @@
 										<th width="40%">Service Details</th>
 										<th width="25%">Icon Name</th>
 										<th width="10%" class="text-center">Actions</th>
-										<th width="10%" class="text-center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -126,10 +125,10 @@
 										<td><?php echo $service['service_name']; ?></td>
 										<td><?php echo $service['service_details']; ?></td>
 										<td><?php echo $service['icon_name']; ?></td>
-										<td><?php echo $service['icon_name']; ?></td>
+					
 										<td class="text-center">
-											<a href="bannerUpdate.php?banner_id=<?php echo $service['id']; ?>"><i class="icon-pencil7"></i></a>
-											<a href="bannerDelete.php?banner_id=<?php echo $service['id']; ?>"><i class="icon-trash"></i></a>
+											<a href="servicesUpdate.php?service_id=<?php echo $service['id']; ?>"><i class="icon-pencil7"></i></a>
+											<a href="servicesDelete.php?service_id=<?php echo $service['id']; ?>"><i class="icon-trash"></i></a>
 										</td>
 									</tr>
 								<?php } ?>
@@ -158,7 +157,6 @@
 
 	</div>
 	<!-- /page container -->
-
 	<?php include '../includes/script.php'; ?>
 </body>
 </html>
