@@ -89,8 +89,8 @@
 						<div class="panel-body">
 							<?php 
 								require '../controller/dbConfig.php';
-								$service_id = $_GET['service_id'];
-								$getSingleDataQry = "SELECT * FROM services WHERE id={$service_id}";
+								$project_id = $_GET['project_id'];
+								$getSingleDataQry = "SELECT * FROM projects WHERE id={$project_id}";
 								$getResult = mysqli_query($dbCon, $getSingleDataQry);
 							?>
 							<form class="form-horizontal" action="../controller/ProjectController.php" method="post" enctype="multipart/form-data">
@@ -107,37 +107,55 @@
 
 
 									<?php
-										foreach ($getResult as $key => $service) {
+										foreach ($getResult as $key => $project) {
 									?>
-										<input type="hidden" class="form-control" name="service_id" value="<?php echo $service['id']; ?>">
+										<input type="hidden" class="form-control" name="project_id" value="<?php echo $project['id']; ?>">
+										<div class="form-group">
+										<label class="control-label col-lg-2" for="category_id">Category</label>
+										<div class="col-lg-10">
+											<select name="category_id" class="form-control" id="category_id">
+				                                <option value="">Select Category</option>
+												<?php 
+												require '../controller/dbConfig.php';
+												$dropdownSelectQry = "SELECT * FROM categories WHERE active_status=1";
+												$categoryList = mysqli_query($dbCon, $dropdownSelectQry);
+													if (!empty($categoryList)) { 
+														foreach($categoryList as $category) { 
+															?>
+															<option value="<?php echo $category['id'];?>" <?php echo ($category['id']==$project['category_id'])?'selected="selected"':'';?>><?php echo $category['category_name'];?></option>
+												 		<?php
+														}
+													} 
+												?>
+				                            </select>
+										</div>
+									</div>
+										<div class="form-group">
+											<label class="control-label col-lg-2" for="project_name">Project Name</label>
+											<div class="col-lg-10">
+												<input type="text" class="form-control" id="project_name" name="project_name" required value="<?php echo $project['project_name']; ?>">
+											</div>
+										</div>
 
 										<div class="form-group">
-											<label class="control-label col-lg-2" for="service_name">Project Name</label>
+											<label class="control-label col-lg-2" for="project_link">Project Link</label>
 											<div class="col-lg-10">
-												<input type="text" class="form-control" id="service_name" name="service_name" required value="<?php echo $service['service_name']; ?>">
+												<input type="text" class="form-control" id="project_link" name="project_link" required value="<?php echo $project['project_link']; ?>">
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="control-label col-lg-2" for="service_details">Project Details</label>
+											<label class="control-label col-lg-2" for="project_thumb">Project Thumb</label>
 											<div class="col-lg-10">
-												<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="service_details" name="service_details" required><?php echo $service['service_details']; ?></textarea>
+												<input type="hidden" class="form-control" id="oldImage" name="oldImage" value="<?php echo $project['project_thumb']; ?>">
+												<input type="file" class="form-control" id="project_thumb" name="project_thumb">
 											</div>
 										</div>
-										<div class="form-group">
-											<label class="control-label col-lg-2" for="icon_name">Icon Name</label>
-											<div class="col-lg-10">
-												<input type="text" class="form-control" id="icon_name" name="icon_name" required value="<?php echo $service['icon_name']; ?>">
-											</div>
-										</div>
-
-										
-										
 									<?php } ?>
 								</fieldset>
 
 								<div class="text-right">
 									<button type="submit" class="btn btn-primary" name="updateProject">Submit</button>
-									<a href="servicesList.php" class="btn btn-default">Back To List </a>
+									<a href="projectsList.php" class="btn btn-default">Back To List </a>
 								</div>
 							</form>
 						</div>

@@ -95,6 +95,6 @@
             }
         }
 
-        header("Location: ../project/projectUpdate.php?project_id={$project_id}&msg={$message}");
+        header("Location: ../project/projectsUpdate.php?project_id={$project_id}&msg={$message}");
         
     }
