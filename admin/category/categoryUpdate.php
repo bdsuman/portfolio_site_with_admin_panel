@@ -93,7 +93,7 @@
 								$getSingleDataQry = "SELECT * FROM categories WHERE id={$category_id}";
 								$getResult = mysqli_query($dbCon, $getSingleDataQry);
 							?>
-							<form class="form-horizontal" action="../controller/categoryController.php" method="post" enctype="multipart/form-data">
+							<form class="form-horizontal" action="../controller/CategoryController.php" method="post" enctype="multipart/form-data">
 								<fieldset class="content-group mt-10">
 
 									<?php

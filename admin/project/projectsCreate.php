@@ -28,7 +28,7 @@
 					<div class="sidebar-user">
 						<div class="category-content">
 							<div class="media">
-								<a href="#" class="media-left"><img src="<?php echo $isInternal == true ? '../': ' ';?>assets/images/placeholder.jpg" class="img-circle img-sm" alt="image"></a>
+								<a href="#" class="media-left"><img src="<?php echo $isInternal == true ? '../': ' ';?>assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></a>
 								<div class="media-body">
 									<span class="media-heading text-semibold">Victoria Baker</span>
 									<div class="text-size-mini text-muted">
@@ -47,7 +47,7 @@
 						</div>
 					</div>
 					<!-- /user menu -->
-                    <?php $manuName = basename(__DIR__); ?>
+					<?php $manuName = basename(__DIR__); ?>
 					<?php include '../includes/navigation.php'; ?>
 
 				</div>
@@ -62,7 +62,7 @@
 				<div class="page-header">
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
-							<li><a href="#"><i class=" icon-file-text position-left"></i> Service</a></li>
+							<li><a href="#"><i class="icon-file-text position-left"></i> Project</a></li>
 							<li class="active">Create</li>
 						</ul>
 					</div>
@@ -76,7 +76,7 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Service Create</h5>
+							<h5 class="panel-title">Project Create</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
 			                		<!-- <li><a data-action="collapse"></a></li>
@@ -88,7 +88,7 @@
 
 						<div class="panel-body">
 
-							<form class="form-horizontal" action="../controller/ServiceController.php" method="post">
+							<form class="form-horizontal" action="../controller/ProjectController.php" method="post" enctype="multipart/form-data">
 								<fieldset class="content-group mt-10">
 
 									<?php
@@ -99,33 +99,50 @@
 											<span class="text-semibold">Success</span> <?php echo $_GET['msg']; ?>
 										</div>
 									<?php } ?>
-
+									
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="service_name">Service Name</label>
+										<label class="control-label col-lg-2" for="category_id">Category</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control" id="service_name" name="service_name" placeholder="Service Name" required>
+											<select name="category_id" class="form-control" id="category_id">
+				                                <option value="">Select Category</option>
+												<?php 
+												require '../controller/dbConfig.php';
+												$dropdownSelectQry = "SELECT * FROM categories WHERE active_status=1";
+												$categoryList = mysqli_query($dbCon, $dropdownSelectQry);
+													if (!empty($categoryList)) { 
+														foreach($categoryList as $category) { 
+															echo'<option value="'.$category['id'].'">'. $category['category_name'].'</option>';
+												 		}
+													} 
+												?>
+				                            </select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-lg-2" for="project_name">Project Name</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="project_name" name="project_name">
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="service_details">Service Details</label>
+										<label class="control-label col-lg-2" for="project_link">Project Link</label>
 										<div class="col-lg-10">
-											<textarea class="form-control" id="service_details" name="service_details" placeholder="Services Details" required></textarea>
+											<input type="text" class="form-control" id="project_link" name="project_link">
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="icon_name">Icon Name</label>
+										<label class="control-label col-lg-2" for="project_thumb">Project Thumb</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control" placeholder="Icon Name" id="icon_name" name="icon_name" required>
+											<input type="file" class="form-control" id="project_thumb" name="project_thumb">
 										</div>
 									</div>
-
-                                </fieldset>
+								</fieldset>
 
 								<div class="text-right">
-									<button type="submit" class="btn btn-primary" name="saveService">Submit</button>
-									<a href="servicesList.php" class="btn btn-default">Back To List </a>
+									<button type="submit" class="btn btn-primary" name="saveProject">Submit</button>
+									<a href="projectsList.php" class="btn btn-default">Back To List </a>
 								</div>
 							</form>
 						</div>

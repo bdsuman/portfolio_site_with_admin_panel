@@ -67,7 +67,7 @@
 				<div class="page-header">
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
-							<li><a href="#"><i class=" icon-file-text position-left"></i> Service</a></li>
+							<li><a href="#"><i class="icon-file-text position-left"></i> Project</a></li>
 							<li class="active">List</li>
 						</ul>
 					</div>
@@ -81,10 +81,10 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Services List</h5>
+							<h5 class="panel-title">Projects List</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
-									<li><a href="servicesCreate.php" class="btn btn-primary add-new">Add New</a></li>
+									<li><a href="projectsCreate.php" class="btn btn-primary add-new">Add New</a></li>
 			                		<!-- <li><a data-action="collapse"></a></li>
 			                		<li><a data-action="reload"></a></li>
 			                		<li><a data-action="close"></a></li> -->
@@ -106,16 +106,17 @@
 								<thead>
 									<tr>
 										<th width="5%">SL.</th>
-										<th width="20%">Service Name</th>
-										<th width="40%">Service Details</th>
-										<th width="25%">Icon Name</th>
+										<th width="20%">Category</th>
+										<th width="20%">Project Name</th>
+										<th width="40%">Project Link</th>
+										<th width="25%">Project Thumb</th>
 										<th width="10%" class="text-center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
 
 								<?php 
-									$selectQry = "SELECT * FROM services WHERE design_status=1";
+									$selectQry = "SELECT * FROM projects WHERE active_status=1";
 									$serviceList = mysqli_query($dbCon, $selectQry);
 									
 									foreach ($serviceList as $key => $service) {
@@ -127,8 +128,8 @@
 										<td><?php echo $service['icon_name']; ?></td>
 					
 										<td class="text-center">
-											<a href="servicesUpdate.php?service_id=<?php echo $service['id']; ?>"><i class="icon-pencil7"></i></a>
-											<a href="servicesDelete.php?service_id=<?php echo $service['id']; ?>"><i class="icon-trash"></i></a>
+											<a href="projectsUpdate.php?service_id=<?php echo $service['id']; ?>"><i class="icon-pencil7"></i></a>
+											<a href="projectsDelete.php?service_id=<?php echo $service['id']; ?>"><i class="icon-trash"></i></a>
 										</td>
 									</tr>
 								<?php } ?>
@@ -156,6 +157,19 @@
 		<!-- /page content -->
 
 	</div>
+	<script type="text/javascript">
+    // $('#courseTable').DataTable();
+    
+    $('#courseTable').DataTable({
+        dom: 'lBfrtip',
+            "iDisplayLength": 10,
+            "lengthMenu": [ 10, 25,30, 50 ],
+            columnDefs: [
+                {'orderable':false, "targets": 5 }
+            ]
+    });
+</script>
+
 	<!-- /page container -->
 	<?php include '../includes/script.php'; ?>
 </body>
