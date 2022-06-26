@@ -116,20 +116,20 @@
 								<tbody>
 
 								<?php 
-									$selectQry = "SELECT * FROM projects WHERE active_status=1";
-									$serviceList = mysqli_query($dbCon, $selectQry);
+									$selectQry = "SELECT categories.category_name,projects.id,projects.project_name,projects.project_link,projects.project_thumb FROM projects inner join categories on projects.category_id= categories.id WHERE projects.active_status=1";
+									$projectList = mysqli_query($dbCon, $selectQry);
 									
-									foreach ($serviceList as $key => $service) {
+									foreach ($projectList as $key => $project) {
 								?>
 									<tr>
 										<td><?php echo ++$key; ?></td>
-										<td><?php echo $service['service_name']; ?></td>
-										<td><?php echo $service['service_details']; ?></td>
-										<td><?php echo $service['icon_name']; ?></td>
-					
+										<td><?php echo $project['category_name']; ?></td>
+										<td><?php echo $project['project_name']; ?></td>
+										<td><?php echo $project['project_link']; ?></td>
+										<td><img src="../uploads/projectImage/<?php echo $project['project_thumb']; ?>" alt="image" class="img-responsive" width="50px" height="50px"></td>
 										<td class="text-center">
-											<a href="projectsUpdate.php?service_id=<?php echo $service['id']; ?>"><i class="icon-pencil7"></i></a>
-											<a href="projectsDelete.php?service_id=<?php echo $service['id']; ?>"><i class="icon-trash"></i></a>
+											<a href="projectsUpdate.php?project_id=<?php echo $project['id']; ?>"><i class="icon-pencil7"></i></a>
+											<a href="projectsDelete.php?project_id=<?php echo $project['id']; ?>"><i class="icon-trash"></i></a>
 										</td>
 									</tr>
 								<?php } ?>
