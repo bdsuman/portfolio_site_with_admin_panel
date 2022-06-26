@@ -23,26 +23,26 @@ if (isset($_POST['saveService'])) {
 }
 
 // THIS FOR UPDATE
-if (isset($_POST['updateBanner'])) {
+if (isset($_POST['updateService'])) {
+   // print_r($_POST);
+    $service_id     = $_POST['service_id'];
+    $service_name     = $_POST['service_name'];
+    $service_details = $_POST['service_details'];
+    $icon_name   = $_POST['icon_name'];
 
-    $banner_id = $_POST['banner_id'];
-    $title     = $_POST['title'];
-    $sub_title = $_POST['sub_title'];
-    $details   = $_POST['details'];
-
-    if (empty($title) || empty($sub_title) || empty($details)) {
+    if (empty($service_name) || empty($service_details) || empty($icon_name)) {
         $message = "All fields are required";
-    } else {
-        $updateQry = "UPDATE banners SET title='{$title}', sub_title='{$sub_title}', details='{$details}' WHERE id='{$banner_id}'";
+    }  else {
+        $updateQry = "UPDATE services SET `service_name`='{$service_name}', service_details='{$service_details}', `icon_name`='{$icon_name}' WHERE id='{$service_id}'";
 
         $isSubmit = mysqli_query($dbCon, $updateQry);
 
         if ($isSubmit == true) {
-            $message = "Banner Update Succesfull";
+            $message = "Service Update Succesfull";
         } else {
             $message = "Update Failed";
         }
     }
 
-    header("Location: ../service/bannerUpdate.php?banner_id={$banner_id}&msg={$message}");
+    header("Location: ../service/servicesUpdate.php?service_id={$service_id}&msg={$message}");
 }

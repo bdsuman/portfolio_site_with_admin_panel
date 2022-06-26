@@ -1,15 +1,15 @@
 <?php
     require '../controller/dbConfig.php';
 
-    $banner_id = $_GET['banner_id'];
-    $updateQry = "UPDATE banners SET active_status=0 WHERE id='{$banner_id}'";
+    $service_id = $_GET['service_id'];
+    $updateQry = "UPDATE services SET design_status=0 WHERE id='{$service_id}'";
 
     $isSubmit = mysqli_query($dbCon, $updateQry);
 
     if ($isSubmit == true) {
-        $message = "Banner Deleted Succesfull";
+        $message = "Service Deleted Succesfull";
     } else {
         $message = "Deleted Failed";
     }
 
-    header("Location: ../banner/bannerList.php?msg={$message}");
+    header("Location: ../service/servicesList.php?msg={$message}");
