@@ -89,11 +89,11 @@
 						<div class="panel-body">
 							<?php 
 								require '../controller/dbConfig.php';
-								$service_id = $_GET['service_id'];
-								$getSingleDataQry = "SELECT * FROM services WHERE id={$service_id}";
+								$category_id = $_GET['category_id'];
+								$getSingleDataQry = "SELECT * FROM categories WHERE id={$category_id}";
 								$getResult = mysqli_query($dbCon, $getSingleDataQry);
 							?>
-							<form class="form-horizontal" action="../controller/CategoryController.php" method="post" enctype="multipart/form-data">
+							<form class="form-horizontal" action="../controller/categoryController.php" method="post" enctype="multipart/form-data">
 								<fieldset class="content-group mt-10">
 
 									<?php
@@ -107,37 +107,23 @@
 
 
 									<?php
-										foreach ($getResult as $key => $service) {
+										foreach ($getResult as $key => $category) {
 									?>
-										<input type="hidden" class="form-control" name="service_id" value="<?php echo $service['id']; ?>">
+										<input type="hidden" class="form-control" name="category_id" value="<?php echo $category['id']; ?>">
 
 										<div class="form-group">
-											<label class="control-label col-lg-2" for="service_name">Category Name</label>
+											<label class="control-label col-lg-2" for="category_name">Category Name</label>
 											<div class="col-lg-10">
-												<input type="text" class="form-control" id="service_name" name="service_name" required value="<?php echo $service['service_name']; ?>">
+												<input type="text" class="form-control" id="category_name" name="category_name" required value="<?php echo $category['category_name']; ?>">
 											</div>
 										</div>
-										<div class="form-group">
-											<label class="control-label col-lg-2" for="service_details">Category Details</label>
-											<div class="col-lg-10">
-												<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="service_details" name="service_details" required><?php echo $service['service_details']; ?></textarea>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-lg-2" for="icon_name">Icon Name</label>
-											<div class="col-lg-10">
-												<input type="text" class="form-control" id="icon_name" name="icon_name" required value="<?php echo $service['icon_name']; ?>">
-											</div>
-										</div>
-
-										
 										
 									<?php } ?>
 								</fieldset>
 
 								<div class="text-right">
 									<button type="submit" class="btn btn-primary" name="updateCategory">Submit</button>
-									<a href="servicesList.php" class="btn btn-default">Back To List </a>
+									<a href="categoryList.php" class="btn btn-default">Back To List </a>
 								</div>
 							</form>
 						</div>

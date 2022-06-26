@@ -67,7 +67,7 @@
 				<div class="page-header">
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
-							<li><a href="#"><i class="icon-office position-left"></i> Category</a></li>
+							<li><a href="#"><i class="icon-color-sampler position-left"></i> Category</a></li>
 							<li class="active">List</li>
 						</ul>
 					</div>

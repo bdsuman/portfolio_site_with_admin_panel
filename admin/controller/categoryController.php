@@ -28,10 +28,10 @@ if (isset($_POST['updateCategory'])) {
     $category_name     = $_POST['category_name'];
    
 
-    if (empty($category_name) || empty($category_details) || empty($icon_name)) {
+    if (empty($category_name)) {
         $message = "All fields are required";
     }  else {
-        $updateQry = "UPDATE categories SET `category_name`='{$category_name}', category_details='{$category_details}', `icon_name`='{$icon_name}' WHERE id='{$category_id}'";
+        $updateQry = "UPDATE categories SET `category_name`='{$category_name}' WHERE id='{$category_id}'";
 
         $isSubmit = mysqli_query($dbCon, $updateQry);
 
