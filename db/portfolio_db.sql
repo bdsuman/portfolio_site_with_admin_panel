@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2022 at 07:38 PM
+-- Generation Time: Jul 04, 2022 at 08:11 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -65,7 +65,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `category_name`, `active_status`, `created_at`, `updated_at`) VALUES
-(1, 'testtt', 1, '2022-06-26 16:08:44', '2022-06-26 16:14:59');
+(1, 'testtt', 1, '2022-06-26 16:08:44', '2022-06-26 16:14:59'),
+(2, 'abc', 1, '2022-06-26 18:45:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -158,7 +159,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `projects`
