@@ -1,3 +1,6 @@
+<?php
+    require 'admin/controller/dbConfig.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,50 +37,37 @@
   <section id="home-section" class="hero">
     <h3 class="vr">Welcome to DigiLab</h3>
     <div class="home-slider js-fullheight owl-carousel">
+
+      <!--slider dynamic start-->
+      <?php
+
+      $banarSelectQry = "select * from banners where `active_status`=1";
+      $banarResults = mysqli_query($dbCon, $banarSelectQry);
+      foreach($banarResults as $banar){
+?>
       <div class="slider-item js-fullheight">
         <div class="overlay"></div>
         <div class="container-fluid p-0">
           <div class="row d-md-flex no-gutters slider-text js-fullheight align-items-center justify-content-end"
             data-scrollax-parent="true">
             <div class="one-third order-md-last img js-fullheight"
-              style="background-image:url(images/xbg_1.jpg.pagespeed.ic.9ay4kj5leb.jpg)">
+              style="background-image:url(admin/uploads/bannerImage/<?php echo $banar['image'];?>)">
               <div class="overlay"></div>
             </div>
             <div class="one-forth d-flex js-fullheight align-items-center ftco-animate"
               data-scrollax=" properties: { translateY: '70%' }">
               <div class="text">
-                <span class="subheading">Welcome to the digilab</span>
-                <h1 class="mb-4 mt-3">Small Details Make A Big <span>Impression</span></h1>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
-                  paradisematic country.</p>
+                <span class="subheading"><?php echo $banar['title'];?></span>
+                <h1 class="mb-4 mt-3"><?php echo $banar['sub_title'];?></h1>
+                <p><?php echo $banar['details'];?></p>
                 <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">Get in touch</a></p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="slider-item js-fullheight">
-        <div class="overlay"></div>
-        <div class="container-fluid p-0">
-          <div class="row d-flex no-gutters slider-text js-fullheight align-items-center justify-content-end"
-            data-scrollax-parent="true">
-            <div class="one-third order-md-last img js-fullheight"
-              style="background-image:url(images/xbg_2.jpg.pagespeed.ic.suoronuwns.jpg)">
-              <div class="overlay"></div>
-            </div>
-            <div class="one-forth d-flex js-fullheight align-items-center ftco-animate"
-              data-scrollax=" properties: { translateY: '70%' }">
-              <div class="text">
-                <span class="subheading">Welcome to the digilab</span>
-                <h1 class="mb-4 mt-3"><span>Strategic</span> Design And <span>Technology</span> Agency</h1>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
-                  paradisematic country.</p>
-                <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">Get in touch</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<?php } ?>
+      <!--slider dynamic end-->
     </div>
   </section>
   <section class="ftco-section ftco-no-pb ftco-no-pt ftco-services bg-light" id="services-section">
@@ -806,20 +796,10 @@
   <script src="maps/api/map.js"></script>
   <script>eval(mod_pagespeed_EpcOxjoUJz);</script>
   <script>eval(mod_pagespeed_hwvKDLnz23);</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-23581568-13');
-  </script>
-  <script defer src="js/beacon.min.js"
-    data-cf-beacon='{"rayId":"680bfffb4b68fdfe","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.8.1","si":10}'></script>
-  <center>
-    <font size="2">This is the free demo result. For a full version of this website, please go to <a
-        href="https://www6.waybackmachinedownloader.com/website-downloader-online/scrape-all-files/">Website
-        Downloader</a></font>
-  </center>
+ 
 </body>
 
 </html>
+<?php 
+mysqli_close($dbCon);
+?>
