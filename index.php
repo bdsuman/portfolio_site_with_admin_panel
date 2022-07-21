@@ -155,81 +155,32 @@
       <div class="row">
         <div class="col-md-12 testimonial">
           <div class="carousel-project owl-carousel">
+          <?php
+                	$selectQry = "SELECT categories.category_name,projects.project_name,projects.project_link,projects.project_thumb FROM projects inner join categories on projects.category_id= categories.id WHERE projects.active_status=1";
+									$projectList = mysqli_query($dbCon, $selectQry);
+									foreach ($projectList as $key => $project) {
+              ?>
             <div class="item">
               <div class="project">
                 <div class="img">
-                  <img src="images/xproject-1.jpg.pagespeed.ic.zhab9ed2c3.jpg" class="img-fluid"
+                  <img src="admin/uploads/projectImage/<?php echo $project['project_thumb']; ?>" class="img-fluid"
                     alt="Colorlib Template">
                   <div class="text px-4">
-                    <h3><a href="#">Work Name</a></h3>
-                    <span>Web Design</span>
+                    <h3><a href="<?php echo $project['project_link']; ?>"><?php echo $project['project_name']; ?></a></h3>
+                    <span><?php echo $project['category_name']; ?></span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="item">
-              <div class="project">
-                <div class="img">
-                  <img src="images/xproject-2.jpg.pagespeed.ic.d_wlp1pl3f.jpg" class="img-fluid"
-                    alt="Colorlib Template">
-                  <div class="text px-4">
-                    <h3><a href="#">Work Name</a></h3>
-                    <span>Web Design</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="project">
-                <div class="img">
-                  <img src="images/xproject-3.jpg.pagespeed.ic.7xydadbmqc.jpg" class="img-fluid"
-                    alt="Colorlib Template">
-                  <div class="text px-4">
-                    <h3><a href="#">Work Name</a></h3>
-                    <span>Web Design</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="project">
-                <div class="img">
-                  <img src="images/xproject-4.jpg.pagespeed.ic.nyuprcadj0.jpg" class="img-fluid"
-                    alt="Colorlib Template">
-                  <div class="text px-4">
-                    <h3><a href="#">Work Name</a></h3>
-                    <span>Web Design</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="project">
-                <div class="img">
-                  <img src="images/project-5.jpg" class="img-fluid" alt="Colorlib Template">
-                  <div class="text px-4">
-                    <h3><a href="#">Work Name</a></h3>
-                    <span>Web Design</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="project">
-                <div class="img">
-                  <img src="images/project-6.jpg" class="img-fluid" alt="Colorlib Template">
-                  <div class="text px-4">
-                    <h3><a href="#">Work Name</a></h3>
-                    <span>Web Design</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <?php 
+                }
+          ?>
           </div>
         </div>
       </div>
     </div>
   </section>
+
   <section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
     <div class="container">
       <div class="row d-flex">
