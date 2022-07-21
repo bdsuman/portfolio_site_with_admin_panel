@@ -121,38 +121,22 @@
         <div class="col-md-6">
           <div class="row">
             <div class="col-md-12">
-              <a href="#" class="services-wrap ftco-animate">
+              <?php
+                $sectionSelectQry = "select * from sections where `status`=1 order by id asc";
+                $sectionsResults = mysqli_query($dbCon,$sectionSelectQry);
+                foreach($sectionsResults as $section){
+              ?>
+              <a href="<?php echo $section['page_link'];?>" class="services-wrap ftco-animate">
                 <div class="icon d-flex justify-content-center align-items-center">
                   <span class="ion-ios-arrow-back"></span>
                   <span class="ion-ios-arrow-forward"></span>
                 </div>
-                <h2>Market Research</h2>
-                <p>Even the all-powerful Pointing has no control about the blind.</p>
+                <h2><?php echo $section['title'];?></h2>
+                <p><?php echo $section['sub_title'];?></p>
               </a>
-              <a href="#" class="services-wrap ftco-animate">
-                <div class="icon d-flex justify-content-center align-items-center">
-                  <span class="ion-ios-arrow-back"></span>
-                  <span class="ion-ios-arrow-forward"></span>
-                </div>
-                <h2>Financial Services</h2>
-                <p>Even the all-powerful Pointing has no control about the blind.</p>
-              </a>
-              <a href="#" class="services-wrap ftco-animate">
-                <div class="icon d-flex justify-content-center align-items-center">
-                  <span class="ion-ios-arrow-back"></span>
-                  <span class="ion-ios-arrow-forward"></span>
-                </div>
-                <h2>Online Marketing</h2>
-                <p>Even the all-powerful Pointing has no control about the blind.</p>
-              </a>
-              <a href="#" class="services-wrap ftco-animate">
-                <div class="icon d-flex justify-content-center align-items-center">
-                  <span class="ion-ios-arrow-back"></span>
-                  <span class="ion-ios-arrow-forward"></span>
-                </div>
-                <h2>24/7 Help & Support</h2>
-                <p>Even the all-powerful Pointing has no control about the blind.</p>
-              </a>
+            <?php 
+                }
+            ?>
             </div>
           </div>
         </div>
