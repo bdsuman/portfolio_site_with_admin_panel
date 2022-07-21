@@ -4,13 +4,12 @@ require 'dbConfig.php';
 if (isset($_POST['saveSection'])) {
     $title     = $_POST['title'];
     $sub_title   = $_POST['sub_title'];
-    $details = $_POST['details'];
-    $page_no   = $_POST['page_no'];
+    $page_link   = $_POST['page_link'];
 
-    if (empty($title) || empty($details) || empty($sub_title) || empty($page_no)) {
+    if (empty($title)|| empty($sub_title) || empty($page_link)) {
         $message = "All fields are required";
     } else {
-        $insertQry = "INSERT INTO `sections`(`title`, `sub_title`, `details`, `page_no`, `status`) VALUES ('{$title}', '{$sub_title}','{$details}','{$page_no}',1)";
+        $insertQry = "INSERT INTO `sections`(`title`, `sub_title`,`page_link`, `status`) VALUES ('{$title}', '{$sub_title}','{$page_link}',1)";
         $isSubmit = mysqli_query($dbCon, $insertQry);
 
         if ($isSubmit == true) {
@@ -30,17 +29,16 @@ if (isset($_POST['updateSection'])) {
     $section_id     = $_POST['section_id'];
     $title     = $_POST['title'];
     $sub_title   = $_POST['sub_title'];
-    $details = $_POST['details'];
-    $page_no   = $_POST['page_no'];
+    $page_link   = $_POST['page_link'];
 
-    if (empty($title) || empty($details) || empty($sub_title) || empty($page_no)) {
+    if (empty($title) || empty($sub_title) || empty($page_link)) {
          $message = "All fields are required";
     }  else {
-       $updateQry = "UPDATE sections SET `title`='{$title}',`sub_title`='{$sub_title}', details='{$details}', `page_no`='{$page_no}' WHERE id='{$section_id}'";
+       $updateQry = "UPDATE sections SET `title`='{$title}',`sub_title`='{$sub_title}', `page_link`='{$page_link}' WHERE id='{$section_id}'";
         $isSubmit = mysqli_query($dbCon, $updateQry);
 
         if ($isSubmit == true) {
-            $message = "Service Update Succesfull";
+            $message = "Section Update Succesfull";
         } else {
             $message = "Update Failed";
         }

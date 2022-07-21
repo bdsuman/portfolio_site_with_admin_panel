@@ -106,11 +106,10 @@
 								<thead>
 									<tr>
 										<th width="5%">SL.</th>
-										<th width="20%">Title</th>
-										<th width="20%">Sub-Title</th>
-										<th width="30%">Details</th>
-										<th width="15%">Page No</th>
-										<th width="10%" class="text-center">Actions</th>
+										<th width="25%">Title</th>
+										<th width="25%">Sub-Title</th>
+										<th width="25%">Page Link</th>
+										<th width="20%" class="text-center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -125,8 +124,7 @@
 										<td><?php echo ++$key; ?></td>
 										<td><?php echo $section['title']; ?></td>
 										<td><?php echo $section['sub_title']; ?></td>
-										<td><?php echo $section['details']; ?></td>
-										<td><?php echo $section['page_no']; ?></td>
+										<td><?php echo $section['page_link']; ?></td>
 					
 										<td class="text-center">
 											<a href="sectionsUpdate.php?section_id=<?php echo $section['id']; ?>"><i class="icon-pencil7"></i></a>

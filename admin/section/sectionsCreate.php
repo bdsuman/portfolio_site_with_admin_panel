@@ -112,18 +112,10 @@
 											<input type="text" class="form-control" id="sub_title" name="sub_title" placeholder="Section Sub Title" required>
 										</div>
 									</div>
-
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="details">Details</label>
+										<label class="control-label col-lg-2" for="page_link">Page Link</label>
 										<div class="col-lg-10">
-											<textarea class="form-control" id="details" name="details" placeholder="Section Details" required></textarea>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="page_no">Page No</label>
-										<div class="col-lg-10">
-											<input type="number" class="form-control" placeholder="Page No." id="page_no" name="page_no" required>
+											<input type="text" class="form-control" placeholder="Page Link." id="page_link" name="page_link" required>
 										</div>
 									</div>
 

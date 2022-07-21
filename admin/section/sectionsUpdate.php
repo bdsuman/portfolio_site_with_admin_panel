@@ -123,16 +123,11 @@
 												<input type="text" class="form-control" id="sub_title" name="sub_title" required value="<?php echo $section['sub_title']; ?>">
 											</div>
 										</div>
+										
 										<div class="form-group">
-											<label class="control-label col-lg-2" for="details">Details</label>
+											<label class="control-label col-lg-2" for="page_link">Page Link</label>
 											<div class="col-lg-10">
-												<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="details" name="details" required><?php echo $section['details']; ?></textarea>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-lg-2" for="page_no">Page No.</label>
-											<div class="col-lg-10">
-												<input type="number" class="form-control" id="page_no" name="page_no" required value="<?php echo $section['page_no']; ?>">
+												<input type="text" class="form-control" id="page_link" name="page_link" required value="<?php echo $section['page_link']; ?>">
 											</div>
 										</div>
 
