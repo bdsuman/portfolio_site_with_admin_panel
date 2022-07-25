@@ -62,7 +62,7 @@
 				<div class="page-header">
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
-							<li><a href="#"><i class="icon-theater position-left"></i> Staff</a></li>
+							<li><a href="#"><i class="icon-users4 position-left"></i> Client</a></li>
 							<li class="active">Update</li>
 						</ul>
 					</div>
@@ -76,7 +76,7 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Staff Update</h5>
+							<h5 class="panel-title">Client Update</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
 			                		<!-- <li><a data-action="collapse"></a></li>
@@ -89,11 +89,11 @@
 						<div class="panel-body">
 							<?php 
 								require '../controller/dbConfig.php';
-								$staff_id = $_GET['staff_id'];
-								$getSingleDataQry = "SELECT * FROM our_staff WHERE id={$staff_id}";
+								$client_id = $_GET['client_id'];
+								$getSingleDataQry = "SELECT * FROM our_clients WHERE id={$client_id}";
 								$getResult = mysqli_query($dbCon, $getSingleDataQry);
 							?>
-							<form class="form-horizontal" action="../controller/StaffController.php" method="post" enctype="multipart/form-data">
+							<form class="form-horizontal" action="../controller/ClientController.php" method="post" enctype="multipart/form-data">
 								<fieldset class="content-group mt-10">
 
 									<?php
@@ -107,14 +107,14 @@
 
 
 									<?php
-										foreach ($getResult as $key => $staff) {
+										foreach ($getResult as $key => $client) {
 									?>
-										<input type="hidden" class="form-control" name="staff_id" value="<?php echo $staff['id']; ?>">
+										<input type="hidden" class="form-control" name="client_id" value="<?php echo $client['id']; ?>">
 
 										<div class="form-group">
-											<label class="control-label col-lg-2" for="name">Name</label>
+											<label class="control-label col-lg-2" for="clients_name">Name</label>
 											<div class="col-lg-10">
-												<input type="text" class="form-control" id="name" name="name" required value="<?php echo $staff['staff_name']; ?>">
+												<input type="text" class="form-control" id="clients_name" name="clients_name" required value="<?php echo $client['clients_name']; ?>">
 											</div>
 										</div>
 										<div class="form-group">
@@ -129,7 +129,7 @@
 													if (!empty($designationList)) { 
 														foreach($designationList as $designation) { 
 															?>
-															<option value="<?php echo $designation['id'];?>" <?php echo ($designation['id']==$staff['designation_id'])?'selected="selected"':'';?>><?php echo $designation['designation_name'];?></option>
+															<option value="<?php echo $designation['id'];?>" <?php echo ($designation['id']==$client['designation_id'])?'selected="selected"':'';?>><?php echo $designation['designation_name'];?></option>
 												 		<?php
 														}
 													} 
@@ -138,43 +138,24 @@
 										</div>
 									</div>
 									<div class="form-group">
-											<label class="control-label col-lg-2" for="staff_image">Image</label>
+											<label class="control-label col-lg-2" for="client_image">Image</label>
 											<div class="col-lg-10">
-												<input type="hidden" class="form-control" id="oldImage" name="oldImage" value="<?php echo $staff['staff_image']; ?>">
-												<input type="file" class="form-control" id="staff_image" name="staff_image">
+												<input type="hidden" class="form-control" id="oldImage" name="oldImage" value="<?php echo $client['client_image']; ?>">
+												<input type="file" class="form-control" id="client_image" name="client_image">
 											</div>
 									</div>
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="twitter">Twitter</label>
+										<label class="control-label col-lg-2" for="client_review">Review</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control" id="twitter" name="twitter" required value="<?php echo $staff['twitter']; ?>">
+											<input type="text" class="form-control" id="client_review" name="client_review" required value="<?php echo $client['client_review']; ?>">
 										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="facebook">Facebook</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="facebook" name="facebook" required value="<?php echo $staff['facebook']; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="linkedin">Linkedin</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="linkedin" name="linkedin" required value="<?php echo $staff['linkedin']; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="instagram">Instagram</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="instagram" name="instagram" required value="<?php echo $staff['instagram']; ?>">
-										</div>
-									</div>
-													
+									</div>			
 									<?php } ?>
 								</fieldset>
 
 								<div class="text-right">
-									<button type="submit" class="btn btn-primary" name="updateStaff">Submit</button>
-									<a href="staffList.php" class="btn btn-default">Back To List </a>
+									<button type="submit" class="btn btn-primary" name="updateClient">Submit</button>
+									<a href="clientList.php" class="btn btn-default">Back To List </a>
 								</div>
 							</form>
 						</div>

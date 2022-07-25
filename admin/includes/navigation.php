@@ -10,6 +10,7 @@
             <li class=<?php echo $manuName == 'project' ? "active" : ''; ?>><a href="<?php echo $isInternal == true ? '../project/': 'project/';?>projectsList.php"><i class="icon-file-text"></i> <span>Project</span></a></li>
             <li class=<?php echo $manuName == 'section' ? "active" : ''; ?>><a href="<?php echo $isInternal == true ? '../section/': 'section/';?>sectionsList.php"><i class="icon-stack3"></i> <span>Section</span></a></li>
             <li class=<?php echo $manuName == 'staff' ? "active" : ''; ?>><a href="<?php echo $isInternal == true ? '../staff/': 'staff/';?>staffList.php"><i class="icon-theater"></i> <span>Staff</span></a></li>
+            <li class=<?php echo $manuName == 'client' ? "active" : ''; ?>><a href="<?php echo $isInternal == true ? '../client/': 'client/';?>clientList.php"><i class="icon-users4"></i> <span>Client</span></a></li>
            
             <li>
                 <a href="#"><i class="icon-gear"></i> <span>Back Office Setup</span></a>

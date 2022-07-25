@@ -62,7 +62,7 @@
 				<div class="page-header">
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
-							<li><a href="#"><i class="icon-theater position-left"></i> Staff</a></li>
+							<li><a href="#"><i class="icon-users4 position-left"></i> Client</a></li>
 							<li class="active">Create</li>
 						</ul>
 					</div>
@@ -76,7 +76,7 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Staff Create</h5>
+							<h5 class="panel-title">Client Create</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
 			                		<!-- <li><a data-action="collapse"></a></li>
@@ -88,7 +88,7 @@
 
 						<div class="panel-body">
 
-							<form class="form-horizontal" action="../controller/StaffController.php" method="post" enctype="multipart/form-data">
+							<form class="form-horizontal" action="../controller/ClientController.php" method="post" enctype="multipart/form-data">
 								<fieldset class="content-group mt-10">
 
 									<?php
@@ -101,9 +101,9 @@
 									<?php } ?>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="name">Name</label>
+										<label class="control-label col-lg-2" for="clients_name">Name</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control" id="name" name="name" >
+											<input type="text" class="form-control" id="clients_name" name="clients_name" >
 										</div>
 									</div>
 									<div class="form-group">
@@ -128,40 +128,22 @@
 									
 									
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="staff_image">Image</label>
+										<label class="control-label col-lg-2" for="client_image">Image</label>
 										<div class="col-lg-10">
-											<input type="file" class="form-control" id="staff_image" name="staff_image">
+											<input type="file" class="form-control" id="client_image" name="client_image">
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="twitter">Twitter</label>
+										<label class="control-label col-lg-2" for="client_review">Review</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control" id="twitter" name="twitter" >
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="facebook">Facebook</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="facebook" name="facebook" >
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="linkedin">Linkedin</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="linkedin" name="linkedin" >
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="instagram">Instagram</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="instagram" name="instagram" >
+											<input type="text" class="form-control" id="client_review" name="client_review" >
 										</div>
 									</div>
 								</fieldset>
 
 								<div class="text-right">
-									<button type="submit" class="btn btn-primary" name="saveStaff">Submit</button>
-									<a href="staffList.php" class="btn btn-default">Back To List </a>
+									<button type="submit" class="btn btn-primary" name="saveClient">Submit</button>
+									<a href="clientList.php" class="btn btn-default">Back To List </a>
 								</div>
 							</form>
 						</div>

@@ -67,7 +67,7 @@
 				<div class="page-header">
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
-							<li><a href="#"><i class="icon-theater position-left"></i> Staff</a></li>
+							<li><a href="#"><i class="icon-users4 position-left"></i> Client</a></li>
 							<li class="active">List</li>
 						</ul>
 					</div>
@@ -81,10 +81,10 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Staff List</h5>
+							<h5 class="panel-title">Client List</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
-									<li><a href="staffCreate.php" class="btn btn-primary add-new">Add New</a></li>
+									<li><a href="clientCreate.php" class="btn btn-primary add-new">Add New</a></li>
 			                		<!-- <li><a data-action="collapse"></a></li>
 			                		<li><a data-action="reload"></a></li>
 			                		<li><a data-action="close"></a></li> -->
@@ -106,36 +106,30 @@
 								<thead>
 									<tr>
 										<th width="5%">SL.</th>
-										<th width="20%">Name</th>
-										<th width="10%">Designation</th>
+										<th width="30%">Name</th>
+										<th width="20%">Designation</th>
 										<th width="15%">Image</th>
-										<th width="10%">Twitter</th>
-										<th width="10%">Facebook</th>
-										<th width="10%">LinkedIn</th>
-										<th width="10%">Instagram</th>
-										<th width="10%" class="text-center">Actions</th>
+										<th width="15%">Review</th>
+										<th width="15%" class="text-center">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
 
 								<?php 
-									$selectQry = "SELECT os.staff_name,os.staff_image,os.twitter,os.facebook,os.linkedin,os.instagram,os.id,d.designation_name FROM our_staff as os inner join designations as d on os.designation_id = d.id WHERE os.active_status=1";
-									$staffList = mysqli_query($dbCon, $selectQry);
+									$selectQry = "SELECT oc.clients_name,oc.client_image,oc.client_review,oc.id,d.designation_name FROM our_clients as oc inner join designations as d on oc.designation_id = d.id WHERE oc.active_status=1";
+									$clientList = mysqli_query($dbCon, $selectQry);
 									
-									foreach ($staffList as $key => $staff) {
+									foreach ($clientList as $key => $client) {
 								?>
 									<tr>
 										<td><?php echo ++$key; ?></td>
-										<td><?php echo $staff['staff_name']; ?></td>
-										<td><?php echo $staff['designation_name']; ?></td>
-										<td><img src="../uploads/staffImage/<?php echo $staff['staff_image']; ?>" alt="staff_image" class="img-responsive" width="50px" height="50px"></td>
-										<td><?php echo $staff['twitter']; ?></td>
-										<td><?php echo $staff['facebook']; ?></td>
-										<td><?php echo $staff['linkedin']; ?></td>
-										<td><?php echo $staff['instagram']; ?></td>
+										<td><?php echo $client['clients_name']; ?></td>
+										<td><?php echo $client['designation_name']; ?></td>
+										<td><img src="../uploads/clientImage/<?php echo $client['client_image']; ?>" alt="client_image" class="img-responsive" width="50px" height="50px"></td>
+										<td><?php echo $client['client_review']; ?></td>
 										<td class="text-center">
-											<a href="staffUpdate.php?staff_id=<?php echo $staff['id']; ?>"><i class="icon-pencil7"></i></a>
-											<a href="staffDelete.php?staff_id=<?php echo $staff['id']; ?>"><i class="icon-trash"></i></a>
+											<a href="clientUpdate.php?client_id=<?php echo $client['id']; ?>"><i class="icon-pencil7"></i></a>
+											<a href="clientDelete.php?client_id=<?php echo $client['id']; ?>"><i class="icon-trash"></i></a>
 										</td>
 									</tr>
 								<?php } ?>

@@ -1,3 +1,3 @@
 <?php
-header("location:staffList.php");
+header("location:clientList.php");
 ?>
