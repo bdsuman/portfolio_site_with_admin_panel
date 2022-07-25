@@ -26,7 +26,7 @@
 
 					<!-- User menu -->
 					<div class="sidebar-user">
-						<div class="category-content">
+						<div class="designation-content">
 							<div class="media">
 								<a href="#" class="media-left"><img src="<?php echo $isInternal == true ? '../': ' ';?>assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></a>
 								<div class="media-body">
@@ -62,7 +62,7 @@
 				<div class="page-header">
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
-							<li><a href="#"><i class="icon-image-compare position-left"></i> Banner</a></li>
+							<li><a href="#"><i class="icon-theater position-left"></i> Staff</a></li>
 							<li class="active">Create</li>
 						</ul>
 					</div>
@@ -76,7 +76,7 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Banner Create</h5>
+							<h5 class="panel-title">Staff Create</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
 			                		<!-- <li><a data-action="collapse"></a></li>
@@ -88,7 +88,7 @@
 
 						<div class="panel-body">
 
-							<form class="form-horizontal" action="../controller/BannerController.php" method="post" enctype="multipart/form-data">
+							<form class="form-horizontal" action="../controller/StaffController.php" method="post" enctype="multipart/form-data">
 								<fieldset class="content-group mt-10">
 
 									<?php
@@ -101,37 +101,67 @@
 									<?php } ?>
 
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="title">Title</label>
+										<label class="control-label col-lg-2" for="name">Name</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control" id="title" name="title" required>
+											<input type="text" class="form-control" id="name" name="name" >
 										</div>
 									</div>
-
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="sub_title">Sub Title</label>
+										<label class="control-label col-lg-2" for="designation_id">Designation</label>
 										<div class="col-lg-10">
-											<input type="text" class="form-control" id="sub_title" name="sub_title" required>
+											<select name="designation_id" class="form-control" id="designation_id">
+				                                <option value="">Select Designation</option>
+												<?php 
+												require '../controller/dbConfig.php';
+												$dropdownSelectQry = "SELECT * FROM designations WHERE active_status=1";
+												$designationList = mysqli_query($dbCon, $dropdownSelectQry);
+													if (!empty($designationList)) { 
+														foreach($designationList as $designation) { 
+															echo'<option value="'.$designation['id'].'">'. $designation['designation_name'].'</option>';
+												 		}
+													} 
+												?>
+				                            </select>
 										</div>
 									</div>
-
+									
+									
+									
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="details">Details</label>
+										<label class="control-label col-lg-2" for="staff_image">Image</label>
 										<div class="col-lg-10">
-											<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="details" name="details" required></textarea>
+											<input type="file" class="form-control" id="staff_image" name="staff_image">
 										</div>
 									</div>
-
 									<div class="form-group">
-										<label class="control-label col-lg-2" for="image">Image</label>
+										<label class="control-label col-lg-2" for="twitter">Twitter</label>
 										<div class="col-lg-10">
-											<input type="file" class="form-control" id="image" name="image">
+											<input type="text" class="form-control" id="twitter" name="twitter" >
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-lg-2" for="facebook">Facebook</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="facebook" name="facebook" >
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-lg-2" for="linkedin">Linkedin</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="linkedin" name="linkedin" >
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-lg-2" for="instagram">Instagram</label>
+										<div class="col-lg-10">
+											<input type="text" class="form-control" id="instagram" name="instagram" >
 										</div>
 									</div>
 								</fieldset>
 
 								<div class="text-right">
-									<button type="submit" class="btn btn-primary" name="saveBanner">Submit</button>
-									<a href="bannerList.php" class="btn btn-default">Back To List </a>
+									<button type="submit" class="btn btn-primary" name="saveStaff">Submit</button>
+									<a href="staffList.php" class="btn btn-default">Back To List </a>
 								</div>
 							</form>
 						</div>

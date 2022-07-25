@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+	
 <?php
+
+	// die($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
 	if (basename(__DIR__) != 'admin') {
 		$baseUrl = '../';
 		$isInternal = true;
@@ -9,6 +12,8 @@
 		$isInternal = false;
 	}
  	include '../includes/head.php'; 
+ 	require '../controller/dbConfig.php'; 
+	
 ?>
 <body>
 
@@ -62,8 +67,8 @@
 				<div class="page-header">
 					<div class="breadcrumb-line">
 						<ul class="breadcrumb">
-							<li><a href="#"><i class="icon-image-compare position-left"></i> Banner</a></li>
-							<li class="active">Create</li>
+							<li><a href="#"><i class="icon-theater position-left"></i> Staff</a></li>
+							<li class="active">List</li>
 						</ul>
 					</div>
 				</div>
@@ -76,9 +81,10 @@
 					<!-- Basic datatable -->
 					<div class="panel panel-flat">
 						<div class="panel-heading">
-							<h5 class="panel-title">Banner Create</h5>
+							<h5 class="panel-title">Staff List</h5>
 							<div class="heading-elements">
 								<ul class="icons-list">
+									<li><a href="staffCreate.php" class="btn btn-primary add-new">Add New</a></li>
 			                		<!-- <li><a data-action="collapse"></a></li>
 			                		<li><a data-action="reload"></a></li>
 			                		<li><a data-action="close"></a></li> -->
@@ -87,53 +93,54 @@
 						</div>
 
 						<div class="panel-body">
-
-							<form class="form-horizontal" action="../controller/BannerController.php" method="post" enctype="multipart/form-data">
-								<fieldset class="content-group mt-10">
-
-									<?php
-										if (isset($_GET['msg'])) {
-									?>
-										<div class="alert alert-success no-border">
-											<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-											<span class="text-semibold">Success</span> <?php echo $_GET['msg']; ?>
-										</div>
-									<?php } ?>
-
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="title">Title</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="title" name="title" required>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="sub_title">Sub Title</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="sub_title" name="sub_title" required>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="details">Details</label>
-										<div class="col-lg-10">
-											<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="details" name="details" required></textarea>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="control-label col-lg-2" for="image">Image</label>
-										<div class="col-lg-10">
-											<input type="file" class="form-control" id="image" name="image">
-										</div>
-									</div>
-								</fieldset>
-
-								<div class="text-right">
-									<button type="submit" class="btn btn-primary" name="saveBanner">Submit</button>
-									<a href="bannerList.php" class="btn btn-default">Back To List </a>
+							<?php
+								if (isset($_GET['msg'])) {
+							?>
+								<div class="alert alert-success no-border mt-10">
+									<button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+									<span class="text-semibold">Success</span> <?php echo $_GET['msg']; ?>
 								</div>
-							</form>
+							<?php } ?>
+
+							<table class="table table-bordered datatable-basic">
+								<thead>
+									<tr>
+										<th width="5%">SL.</th>
+										<th width="20%">Name</th>
+										<th width="10%">Designation</th>
+										<th width="15%">Image</th>
+										<th width="10%">Twitter</th>
+										<th width="10%">Facebook</th>
+										<th width="10%">LinkedIn</th>
+										<th width="10%">Instagram</th>
+										<th width="10%" class="text-center">Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+
+								<?php 
+									$selectQry = "SELECT os.staff_name,os.staff_image,os.twitter,os.facebook,os.linkedin,os.instagram,os.id,d.designation_name FROM our_staff as os inner join designations as d on os.designation_id = d.id WHERE os.active_status=1";
+									$staffList = mysqli_query($dbCon, $selectQry);
+									
+									foreach ($staffList as $key => $staff) {
+								?>
+									<tr>
+										<td><?php echo ++$key; ?></td>
+										<td><?php echo $staff['staff_name']; ?></td>
+										<td><?php echo $staff['designation_name']; ?></td>
+										<td><img src="../uploads/staffImage/<?php echo $staff['staff_image']; ?>" alt="staff_image" class="img-responsive" width="50px" height="50px"></td>
+										<td><?php echo $staff['twitter']; ?></td>
+										<td><?php echo $staff['facebook']; ?></td>
+										<td><?php echo $staff['linkedin']; ?></td>
+										<td><?php echo $staff['instagram']; ?></td>
+										<td class="text-center">
+											<a href="staffUpdate.php?staff_id=<?php echo $staff['id']; ?>"><i class="icon-pencil7"></i></a>
+											<a href="staffDelete.php?staff_id=<?php echo $staff['id']; ?>"><i class="icon-trash"></i></a>
+										</td>
+									</tr>
+								<?php } ?>
+								</tbody>
+							</table>
 						</div>
 
 						
