@@ -18,7 +18,8 @@
                 <a href="#"><i class="icon-gear"></i> <span>Back Office Setup</span></a>
                 <ul>
                     <li class=<?php echo $manuName == 'category' ? "active" : ''; ?>><a href="<?php echo $isInternal == true ? '../category/': 'category/';?>categoryList.php"><i class="icon-color-sampler"></i> <span>Category</span></a></li>
-                    <li><a href="#">Designation</a></li>
+                    <li class=<?php echo $manuName == 'designation' ? "active" : ''; ?>><a href="<?php echo $isInternal == true ? '../designation/': 'designation/';?>designationList.php"><i class="icon-magazine"></i> <span>Designation</span></a></li>
+                   
                 </ul>
             </li>
             
