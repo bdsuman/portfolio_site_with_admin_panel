@@ -557,22 +557,48 @@
         </div>
       </div>
       <div class="row no-gutters block-9">
+        <?php
+        if (isset($_POST['contact'])) {
+          // print_r($_POST);
+          // exit;
+          $name     = $_POST['name'];
+          $email = $_POST['email'];
+          $subject   = $_POST['subject'];
+          $message   = $_POST['message'];
+      
+          if (empty($name) || empty($email) || empty($subject) || empty($message)) {
+              $alert = "All fields are required";
+          } else {
+              $insertQry = "INSERT INTO `contact_messages`(`name`, `email`, `subject`,`message`,`active_status`) VALUES ('{$name}', '{$email}', '{$subject}','{$message}',1)";
+              $isSubmit = mysqli_query($dbCon, $insertQry);
+      
+              if ($isSubmit == true) {
+                $alert = "Message Send Succesfully.";
+              } else {
+                $alert = "Message Send Failed";
+              }
+          }
+      
+         echo '<script>alert("'.$alert.'");</script>';
+      }
+        
+        ?>
         <div class="col-md-6 order-md-last d-flex">
-          <form action="#" class="bg-light p-5 contact-form">
+          <form action="index.php" method="POST" class="bg-light p-5 contact-form">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Name">
+              <input type="text" name="name" id="name" class="form-control" placeholder="Your Name">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Email">
+              <input type="text" name="email" id="email" class="form-control" placeholder="Your Email">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Subject">
+              <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject">
             </div>
             <div class="form-group">
-              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
             </div>
             <div class="form-group">
-              <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              <input type="submit" name="contact" value="Send Message" class="btn btn-primary py-3 px-5">
             </div>
           </form>
         </div>
